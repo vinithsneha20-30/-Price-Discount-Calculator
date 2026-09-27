@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>price&discount</title>
+</head>
+<body>
+    <script>
+        let name="oppo reno 12"
+        const basePrice=43000
+        const discountPercent=50
+        const taxRate=18
+        let stockStatus="in_stock"
+
+        function  calculateDiscountedPrice(price, discount){
+            return price-((price*discount) /100)
+        }
+
+        function  calculateTax(price, taxRate){
+            return (price*taxRate)/100
+        }
+
+        function  calculateFinalPrice( discount, taxRate) {
+            return Math.round(discount+taxRate)
+        }
+
+        function FreeShipping(finalPrice){
+            return finalPrice>=500 ? 'Free Shipping' :  'Shipping: Rs.49'
+        }
+
+        function getStockMessage(status){
+            switch(status.toLowerCase()){
+                case 'in_stock':
+                    return  'In Stock';
+                case 'limited':
+                    return  'Limited Stock';
+                case 'out_of_stock':
+                    return  'Out of Stock';
+                default: 
+                    return "unknown value";
+
+            }
+        }
+
+        function sivanya (){
+            const discountfl= calculateDiscountedPrice(basePrice,discountPercent)
+            const tax = calculateTax(basePrice,taxRate)
+            const finalPrice= calculateFinalPrice(discountfl,tax)
+            const Shipping= FreeShipping(finalPrice)
+            const status= getStockMessage(stockStatus)
+            console.log(
+                "product name: "+name+
+                "\n\nbase price: "+basePrice+
+                "\n\ndiscount :"+discountfl+
+                "\n\ntax :"+tax+
+                "\n\nfinal price: "+finalPrice+
+                "\n\nshipping :"+Shipping+
+                "\n\nstatus :"+status
+            )
+        }
+        sivanya()
+
+            </script>
+</body>
+</html>
